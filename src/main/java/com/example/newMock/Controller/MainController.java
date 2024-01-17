@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @RestController
@@ -18,6 +20,7 @@ public class MainController {
 
     private Logger log = LoggerFactory.getLogger(MainController.class);
     private ObjectMapper mapper = new ObjectMapper();
+    private List<String> currencies = Arrays.asList("US", "EU", "RU");
     private Random random = new Random();
 
     @PostMapping(
@@ -32,19 +35,22 @@ public class MainController {
             String clientId = requestDTO.getClientId();
             char firstDigit = clientId.charAt(0);
             BigDecimal maxLimit;
-            String currency;
+//            String currency;
 
             if (firstDigit == '8') {
                 maxLimit = new BigDecimal(2000);
-                currency = "US";
+//                currency = "US";
             } else if (firstDigit == '9') {
                 maxLimit = new BigDecimal(1000);
-                currency = "EU";
+//                currency = "EU";
             } else {
                 maxLimit = new BigDecimal(50000);
-                currency = "RU";
+//                currency = "RU";
             }
 
+//          случайный выбор валюты
+            String currency = currencies.get(random.nextInt(currencies.size()));
+//          случайный выбор баланса
             BigDecimal balance = new BigDecimal(random.nextInt(maxLimit.intValue()));
 
             ResponseDTO responseDTO = new ResponseDTO();
