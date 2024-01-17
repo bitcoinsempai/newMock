@@ -35,7 +35,6 @@ public class MainController {
             String clientId = requestDTO.getClientId();
             char firstDigit = clientId.charAt(0);
             BigDecimal maxLimit;
-//            String currency;
 
             if (firstDigit == '8') {
                 maxLimit = new BigDecimal(2000);
