@@ -41,8 +41,8 @@ public class MainController {
                 maxLimit = new BigDecimal(1000);
                 currency = "EU";
             } else {
-                maxLimit = new BigDecimal(50000); // Default value
-                currency = "RU"; // Default currency
+                maxLimit = new BigDecimal(50000);
+                currency = "RU";
             }
 
             BigDecimal balance = new BigDecimal(random.nextInt(maxLimit.intValue()));
